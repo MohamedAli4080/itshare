@@ -1,0 +1,44 @@
+<app-employee-count [all]="getTotalEmployeesCount()"
+[male]="getMaleCount()"
+[female]="getFemaleCount()"
+></app-employee-count>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>DOB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees" >
+      <td>{{employee.Name | employeeTitle :employee.Gender}}</td>
+      <td>{{employee.Age}}</td>
+      <td>{{employee.Gender | uppercase}}</td>
+      <td>{{employee.DOB}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active':defaultview=='certification'}" (click)="setview('certification')">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active':defaultview=='courses'}" (click)="setview('courses')">Link</a>
+  </li>
+
+</ul>
+
+<div [ngSwitch]="defaultview">
+  <div *ngSwitchCase="'certification'">hi this is certification </div>
+  <div *ngSwitchCase="'courses'">hi this is courses</div>
+</div>
+
+<p>
+  <input type="text" appInputFormat>
+</p>
+
+
+<app-login></app-login>
